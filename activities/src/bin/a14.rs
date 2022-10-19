@@ -10,5 +10,26 @@
 // * Iterate through the vector using a for..in loop
 // * Use an if expression to determine which person's info should be printed
 // * The name and colors should be printed using a function
+use std::slice;
+use std::str;
 
-fn main() {}
+struct Person {
+    name:  &'static str,
+    age: i32,
+    color:  &'static str
+}
+fn main() {
+    let people: Vec<Person> = vec![
+        Person{name:"Jon",age:19,color:"blue"},
+        Person{name:"Sam",age:7,color:"red"},
+        Person{name:"Tim",age:9,color:"green"}];
+    for p in people {
+        if p.age < 10 {
+            print_name_and_color(&p);
+        }
+    }
+}
+
+fn print_name_and_color(p:&Person) {
+    println!("{} {}",p.name,p.color);
+}

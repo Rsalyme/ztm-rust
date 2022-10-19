@@ -10,4 +10,13 @@
 // * Use a match expression to determine which message to display
 // * Use an underscore (_) to match on any value
 
-fn main() {}
+fn main() {
+    let mrp = 7;
+    match mrp {
+        3 => println!("Here's 3"),
+        11 => println!("Here's 11"),
+        12 => println!("Here's 12"),
+        _ => println!("Here's {:?}",mrp),
+
+    }
+}

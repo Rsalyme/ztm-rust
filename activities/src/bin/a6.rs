@@ -10,4 +10,12 @@
 // * Print the variable within the while loop
 // * Do not use break to exit the loop
 
-fn main() {}
+fn main() {
+    let mut muint = 5;
+    while muint > 0 {
+        println!("Here's your variable {:?}", muint);
+        muint = muint-1;
+    }
+    println!("done!");
+
+}
