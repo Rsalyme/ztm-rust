@@ -12,4 +12,12 @@
 //   to uppercase and lowercase
 //   * Try searching for: to_uppercase, to_lowercase
 
-fn main() {}
+fn main() {
+    let name = "Ruud Erie".to_owned();
+
+    let allcaps = &name.to_uppercase();
+    let nocaps = &name.to_lowercase();
+
+    println!("All Caps {:?}", allcaps);
+    println!("No Caps {:?}", nocaps);
+}
