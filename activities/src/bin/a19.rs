@@ -22,12 +22,15 @@ fn main() {
     store_items.insert("Beds", 3);
     store_items.insert("Tables", 2);
     store_items.insert("Couches", 0);
-
+    let mut total_stock = 0;
     for (item, quantity) in store_items.iter() {
+        total_stock = total_stock + quantity;
         match quantity {
             0 => println!("item: {item} | out of stock"),
             _ => println!("item: {item} quantity: {quantity}"),
           
         }
     }
+    println!("Total Stock: {:?}", total_stock);
+
 }
