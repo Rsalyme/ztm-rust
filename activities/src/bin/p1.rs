@@ -28,5 +28,102 @@
 //   the functionality for that menu in isolation.
 // * A vector is the easiest way to store the bills at stage 1, but a
 //   hashmap will be easier to work with at stages 2 and 3.
+use std::collections::HashMap;
+use std::str::FromStr;
+use std::io;
+use std::fmt::Display;
+#[derive(Hash, Eq, PartialEq, Debug)]
+struct Bill {
+    name: String,
+    amount: i32,
+}
 
-fn main() {}
+impl Bill {
+    /// Creates a new Viking.
+    fn new(_name: &str, _amount: i32) -> Bill {
+        Bill { name: _name.to_string(), amount: _amount }
+    }
+}
+
+// Use a HashMap to store the vikings' health points.
+fn read_input() -> io::Result<String> {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input)?;
+    Ok(input.trim().to_owned().to_uppercase())
+}
+
+fn find_bill(name: &str, bills:HashMap<String, Bill>){
+    println!("{:?}",bills.get(name));
+}
+fn get_all_bills(bills:HashMap<String, Bill>){
+    for bill in bills.values() {
+        println!("{:?}",bill);
+    }
+}
+fn remove_bill(name: &str,mut bills:HashMap<String, Bill>){
+    bills.remove(name);
+    for bill in bills.values() {
+        println!("{:?}",bill);
+    }
+}
+
+enum Menu {
+    ADD,
+    VIEW,
+    REMOVE,
+    EDIT
+}
+
+impl FromStr for Menu {
+    type Err = ();
+
+    fn from_str(input: &str) -> Result<Menu, Self::Err> {
+        let binding = input.to_uppercase();
+        let upper_input= binding.as_str();
+        match &upper_input {
+            &"ADD"  => {
+                println!("Add a Bill");
+                Ok(Menu::ADD)
+            },
+            &"VIEW"  => {
+                println!("View all Bills");
+                Ok(Menu::VIEW)
+            },
+            &"REMOVE" => 
+            {
+                println!("Remove a Bill");
+                Ok(Menu::REMOVE)
+            
+            },
+            &"EDIT" => {
+                println!("Edit a Bill");
+                Ok(Menu::EDIT)
+            },
+            _      => {
+                println!("Unable to find that menu option.");
+                
+                Err(())
+            }
+        }
+    }
+}
+
+fn main() {
+
+    let mut bills:HashMap<String, Bill> = HashMap::new();
+    let mut all_input = vec![];
+    let mut times_input = 0;
+
+
+    while times_input < 1 {
+        match read_input() {
+            Ok(words) => {
+                Menu::from_str(words.as_str());
+                all_input.push(words);
+                times_input +=1;
+            },
+            Err(e) => println!("error {:?}",e)
+        }
+    }
+}
+
