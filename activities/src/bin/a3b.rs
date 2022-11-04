@@ -9,4 +9,13 @@
 // * Use an if..else if..else block to determine which message to display
 // * Use the println macro to display messages to the terminal
 
-fn main() {}
+fn main() {
+    let age = 21;
+    if age >= 35 {
+        println!("You could be president")
+    } else {
+        println!("Wait a while")
+    }
+
+
+}

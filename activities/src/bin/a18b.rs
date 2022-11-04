@@ -113,4 +113,3 @@ fn main() {
     println!("{anita_authorized:?}");
     println!("{brody_authorized:?}");
     println!("{catherine_authorized:?}");
-}
